@@ -1,0 +1,57 @@
+@import 'src/styles/common.scss';
+
+.container {
+  background: darken($white, 10%);
+}
+
+.header {
+  @include flex(space-between, center);
+
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px 15px;
+}
+
+.profile {
+  @include flex(center, center);
+  @include size(48px);
+
+  margin-right: 20px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: $white;
+  background: $primary-blue;
+  border-radius: 100%;
+}
+
+.logout {
+  width: 150px;
+  height: 38px;
+}
+
+.links {
+  @include flex();
+
+  width: 100%;
+  padding: 2px;
+}
+
+.link {
+  margin: 0 5px;
+  padding: 10px;
+  line-height: 1.1;
+  white-space: nowrap;
+  border-radius: 5px;
+  transition: background, font-weight 0.2s;
+  cursor: pointer;
+
+  &_active,
+  &:hover {
+    background: $primary-blue;
+    color: $white;
+  }
+
+  p {
+    margin: 0;
+  }
+}

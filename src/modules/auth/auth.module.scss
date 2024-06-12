@@ -1,0 +1,43 @@
+@import 'src/styles/common.scss';
+
+.container {
+  @include flex(center, center);
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  @include flex(flex-start);
+
+  position: relative;
+  gap: 30px;
+  padding: 60px;
+  background: darken($white, 10%);
+}
+
+.logo {
+  height: 136px;
+}
+
+.input {
+  width: 300px;
+  margin-bottom: 20px;
+
+  &_margin_bottom {
+    margin-bottom: 40px;
+  }
+}
+
+.button {
+  width: 100%;
+}
+
+.error {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  bottom: 42px;
+  margin: 0;
+  color: $reddish;
+}

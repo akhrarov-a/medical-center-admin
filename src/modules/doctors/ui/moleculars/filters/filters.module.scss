@@ -1,0 +1,5 @@
+@import 'src/styles/common.scss';
+
+.container {
+  @include flex(flex-start, center);
+}
