@@ -1,11 +1,11 @@
-import { GlobalStore } from '@store';
-import { DefaultOptionType } from 'rc-select/es/Select';
+import { message } from 'antd';
 import { makeAutoObservable, runInAction } from 'mobx';
-import { DoctorContract } from '@api';
+import { DefaultOptionType } from 'rc-select/es/Select';
+import { DoctorContract, DoctorsTableFilters } from '@api';
+import { GlobalStore } from '@store';
 import { DoctorForm } from '@doctors/doctors.types';
 import { DoctorsAdapter } from '@doctors/lib';
 import { DepartmentsAdapter } from '@departments/lib';
-import { message } from 'antd';
 
 /**
  * Doctors store
@@ -26,6 +26,14 @@ class DoctorsStore {
   public currentDoctorId: number = 0;
 
   public departments: DefaultOptionType[] = [];
+
+  public tableFilters: DoctorsTableFilters = {};
+
+  public setTableFilters = (filters: DoctorsTableFilters) => {
+    runInAction(() => {
+      this.tableFilters = { ...this.tableFilters, ...filters };
+    });
+  };
 
   public clearInitialValues = () => {
     runInAction(() => {

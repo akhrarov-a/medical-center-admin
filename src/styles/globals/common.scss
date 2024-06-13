@@ -1,3 +1,5 @@
+@import '../common.scss';
+
 h1,
 h2,
 h3,
@@ -25,4 +27,22 @@ body {
 
 body {
   font-family: Roboto, Tahoma, sans-serif;
+}
+
+.filter-container {
+  @include flex(flex-start, center);
+
+  gap: 20px;
+
+  input {
+    width: 200px;
+  }
+}
+
+.head_pill {
+  padding: 2px 5px;
+  margin-left: 10px;
+  border: 1px solid $primary-blue;
+  color: $primary-blue;
+  border-radius: 10px;
 }

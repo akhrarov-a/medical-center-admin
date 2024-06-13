@@ -1,6 +1,5 @@
 import { ColumnsType } from 'antd/es/table';
 import { DoctorContract } from '@api';
-import styles from './list.module.scss';
 
 /**
  * List
@@ -41,9 +40,7 @@ const Columns: ColumnsType<DoctorContract> = [
     render: (department, record) => (
       <div>
         {department.name}
-        {record.isHeadOfDepartment && (
-          <span className={styles.head_pill}>глава</span>
-        )}
+        {record.isHeadOfDepartment && <span className='head_pill'>глава</span>}
       </div>
     ),
     sorter: (a, b) => a.department.name.length - b.department.name.length

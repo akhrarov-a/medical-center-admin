@@ -1,5 +1,6 @@
 import { hoc } from '@utils';
 import { Tables } from '@components';
+import { DepartmentsTableFilters } from '../../moleculars';
 import { Columns } from './list.config';
 import { useDepartmentsListProps } from './list.props';
 
@@ -13,9 +14,11 @@ const DepartmentsList = hoc.observer(
       loading={loading}
       columns={Columns}
       dataSource={departments}
+      addText='Добавить отделение'
       onAdd={() => navigate('/departments/create')}
       onDelete={onDeleteDepartments}
       onRowClick={record => navigate(`/departments/${record.id}`)}
+      filters={<DepartmentsTableFilters />}
     />
   )
 );

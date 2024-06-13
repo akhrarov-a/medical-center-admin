@@ -1,10 +1,8 @@
 import { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Button, Checkbox, Form as UIForm, Input, Select } from 'antd';
-import classNames from 'classnames';
 import { useStore } from '@store';
 import { FormProps } from './form.props';
-import styles from './form.module.scss';
 
 /**
  * <Form />
@@ -15,7 +13,7 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
   const [form] = UIForm.useForm();
 
   return (
-    <div className={styles.container}>
+    <div className='form-container'>
       <UIForm
         initialValues={initialValues}
         form={form}
@@ -25,7 +23,7 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
           required: 'Обязательное поле'
         }}
       >
-        <div className={styles.header}>
+        <div className='header'>
           <p>
             {isEdit
               ? `Изменить ${initialValues.firstName} ${initialValues.lastName}`
@@ -37,13 +35,13 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
           </Button>
         </div>
 
-        <div className={styles.row}>
-          <p className={styles.row_title}>
+        <div className='row'>
+          <p className='row_title'>
             <span>*</span> Имя:
           </p>
 
           <UIForm.Item
-            className={styles.row_input}
+            className='row_input'
             name='firstName'
             rules={[{ required: true }]}
             validateTrigger='onBlur'
@@ -52,12 +50,12 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
           </UIForm.Item>
         </div>
 
-        <div className={styles.row}>
-          <p className={styles.row_title}>
+        <div className='row'>
+          <p className='row_title'>
             <span>*</span> Фамилия:
           </p>
           <UIForm.Item
-            className={styles.row_input}
+            className='row_input'
             name='lastName'
             rules={[{ required: true }]}
             validateTrigger='onBlur'
@@ -66,13 +64,13 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
           </UIForm.Item>
         </div>
 
-        <div className={styles.row}>
-          <p className={styles.row_title}>
+        <div className='row'>
+          <p className='row_title'>
             <span>*</span> Отчество:
           </p>
 
           <UIForm.Item
-            className={styles.row_input}
+            className='row_input'
             name='surname'
             rules={[{ required: true }]}
             validateTrigger='onBlur'
@@ -81,13 +79,13 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
           </UIForm.Item>
         </div>
 
-        <div className={styles.row}>
-          <p className={styles.row_title}>
+        <div className='row'>
+          <p className='row_title'>
             <span>*</span> Отделения:
           </p>
 
           <UIForm.Item
-            className={styles.row_input}
+            className='row_input'
             name='department'
             rules={[{ required: true }]}
             validateTrigger='onBlur'
@@ -96,11 +94,11 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
           </UIForm.Item>
         </div>
 
-        <div className={classNames(styles.row, styles.row_equal)}>
-          <p className={styles.row_title}>Является ли главой отделения:</p>
+        <div className='row row_equal'>
+          <p className='row_title'>Является ли главой отделения:</p>
 
           <UIForm.Item
-            className={styles.row_equal_input}
+            className='row_equal_input'
             name='isHeadOfDepartment'
             valuePropName='checked'
           >

@@ -5,11 +5,16 @@
   margin: 20px auto;
 }
 
+.header {
+  @include flex(space-between, center);
+
+  margin-bottom: 20px;
+}
+
 .buttons {
   @include flex(flex-end, center);
 
   gap: 20px;
-  margin-bottom: 20px;
 
   button {
     min-width: 120px;

@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import { makeAutoObservable, runInAction } from 'mobx';
 import { GlobalStore } from '@store';
-import { DepartmentContract } from '@api';
+import { DepartmentContract, DepartmentsTableFilters } from '@api';
 import { DepartmentsAdapter } from './lib';
 import { DepartmentForm } from './departments.types';
 
@@ -22,6 +22,14 @@ class DepartmentsStore {
 
   public initialValues: DepartmentForm = {} as DepartmentForm;
   public currentDepartmentId: number = 0;
+
+  public tableFilters: DepartmentsTableFilters = {};
+
+  public setTableFilters = (filters: DepartmentsTableFilters) => {
+    runInAction(() => {
+      this.tableFilters = { ...this.tableFilters, ...filters };
+    });
+  };
 
   public clearInitialValues = () => {
     runInAction(() => {

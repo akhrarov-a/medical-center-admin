@@ -18,6 +18,10 @@ type TablesProps = {
    */
   dataSource: any[];
   /**
+   * Add text
+   */
+  addText: string;
+  /**
    * On row click
    */
   onRowClick: (record: any) => void;
@@ -29,6 +33,10 @@ type TablesProps = {
    * On delete
    */
   onDelete: (ids: number[]) => void;
+  /**
+   * Filters
+   */
+  filters?: JSX.Element;
 };
 
 /**

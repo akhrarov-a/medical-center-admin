@@ -14,20 +14,26 @@ const Tables = hoc(
     loading,
     columns,
     dataSource,
+    addText,
     selectedRowIds,
     setSelectedRowIds,
     onRowClick,
     onAdd,
-    deleteSelectRowIds
+    deleteSelectRowIds,
+    filters
   }) => (
     <div className={styles.container}>
-      <div className={styles.buttons}>
-        <Button type='primary' onClick={onAdd}>
-          Добавить отделение
-        </Button>
-        <Button type='primary' onClick={deleteSelectRowIds}>
-          Удалить
-        </Button>
+      <div className={styles.header}>
+        {filters}
+
+        <div className={styles.buttons}>
+          <Button type='primary' onClick={onAdd}>
+            {addText}
+          </Button>
+          <Button type='primary' onClick={deleteSelectRowIds}>
+            Удалить
+          </Button>
+        </div>
       </div>
 
       <Table<DepartmentContract>

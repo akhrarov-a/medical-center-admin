@@ -1,6 +1,24 @@
 import { DepartmentContract } from './departments.model';
 
 /**
+ * Doctors table filters
+ */
+type DoctorsTableFilters = {
+  /**
+   * Id
+   */
+  id?: string;
+  /**
+   * Search
+   */
+  search?: string;
+  /**
+   * Department
+   */
+  department?: number;
+};
+
+/**
  * Create update doctor dto
  */
 type CreateUpdateDoctorDto = {
@@ -40,4 +58,4 @@ type DoctorContract = Omit<CreateUpdateDoctorDto, 'department'> & {
   department: DepartmentContract;
 };
 
-export type { CreateUpdateDoctorDto, DoctorContract };
+export type { CreateUpdateDoctorDto, DoctorContract, DoctorsTableFilters };

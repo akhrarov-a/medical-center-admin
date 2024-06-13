@@ -1,4 +1,18 @@
 /**
+ * Departments table filters
+ */
+type DepartmentsTableFilters = {
+  /**
+   * Id
+   */
+  id?: string;
+  /**
+   * Name
+   */
+  name?: string;
+};
+
+/**
  * Create update department dto
  */
 type CreateUpdateDepartmentDto = {
@@ -18,4 +32,8 @@ type DepartmentContract = CreateUpdateDepartmentDto & {
   id: number;
 };
 
-export type { CreateUpdateDepartmentDto, DepartmentContract };
+export type {
+  CreateUpdateDepartmentDto,
+  DepartmentContract,
+  DepartmentsTableFilters
+};
