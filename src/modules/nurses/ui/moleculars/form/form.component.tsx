@@ -90,7 +90,11 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
             rules={[{ required: true }]}
             validateTrigger='onBlur'
           >
-            <Select placeholder='департамент' options={store.departments} />
+            <Select
+              loading={store.loading}
+              placeholder='департамент'
+              options={store.departments}
+            />
           </UIForm.Item>
         </div>
       </UIForm>

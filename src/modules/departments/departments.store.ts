@@ -69,6 +69,8 @@ class DepartmentsStore {
   };
 
   public getDepartmentById = async (id: string) => {
+    this.global.showLoader();
+
     try {
       const response = await this.global.api.departments.getDepartmentById(id);
 
@@ -84,12 +86,16 @@ class DepartmentsStore {
         'Ошибка при загрузке отделения. Попробуйте обновить страницу.'
       );
     }
+
+    this.global.hideLoader();
   };
 
   public createDepartment = async (
     department: DepartmentForm,
     navigate: (path: string) => void
   ) => {
+    this.global.showLoader();
+
     try {
       const response = await this.global.api.departments.createDepartment(
         DepartmentsAdapter.departmentFormToDepartmentDto(department)
@@ -103,12 +109,16 @@ class DepartmentsStore {
 
       message.error('Ошибка при создании отделения. Попробуйте снова.');
     }
+
+    this.global.hideLoader();
   };
 
   public updateDepartment = async (
     department: DepartmentForm,
     navigate: (path: string) => void
   ) => {
+    this.global.showLoader();
+
     try {
       const id = this.currentDepartmentId;
       await this.global.api.departments.updateDepartment(
@@ -126,6 +136,8 @@ class DepartmentsStore {
 
       message.error('Ошибка при обновлении отделения. Попробуйте снова.');
     }
+
+    this.global.hideLoader();
   };
 
   public deleteDepartmentsByIds = async (ids: number[]) => {

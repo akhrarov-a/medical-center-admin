@@ -73,6 +73,8 @@ class DoctorsStore {
   };
 
   public getDoctorById = async (id: string) => {
+    this.global.showLoader();
+
     try {
       const response = await this.global.api.doctors.getDoctorById(id);
 
@@ -87,12 +89,16 @@ class DoctorsStore {
 
       message.error('Ошибка при загрузке врача. Попробуйте обновить страницу.');
     }
+
+    this.global.hideLoader();
   };
 
   public createDoctor = async (
     doctor: DoctorForm,
     navigate: (path: string) => void
   ) => {
+    this.global.showLoader();
+
     try {
       const response = await this.global.api.doctors.createDoctor(
         DoctorsAdapter.doctorFormToDoctorDto(doctor)
@@ -106,12 +112,16 @@ class DoctorsStore {
 
       message.error('Ошибка при создании врача. Попробуйте снова.');
     }
+
+    this.global.hideLoader();
   };
 
   public updateDoctor = async (
     doctor: DoctorForm,
     navigate: (path: string) => void
   ) => {
+    this.global.showLoader();
+
     try {
       const id = this.currentDoctorId;
       await this.global.api.doctors.updateDoctor(
@@ -129,6 +139,8 @@ class DoctorsStore {
 
       message.error('Ошибка при обновлении врача. Попробуйте снова.');
     }
+
+    this.global.hideLoader();
   };
 
   public deleteDoctorsByIds = async (ids: number[]) => {
@@ -156,6 +168,10 @@ class DoctorsStore {
   };
 
   public getDepartments = async () => {
+    runInAction(() => {
+      this.loading = true;
+    });
+
     try {
       const response = await this.global.api.departments.getAllDepartments();
 
@@ -167,6 +183,10 @@ class DoctorsStore {
     } catch (error) {
       console.log('error', error);
     }
+
+    runInAction(() => {
+      this.loading = false;
+    });
   };
 }
 

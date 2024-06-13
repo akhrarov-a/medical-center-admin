@@ -27,6 +27,8 @@ class AuthStore {
     credentials: LoginCredentials,
     navigate: (path: string) => void
   ) => {
+    this.global.showLoader();
+
     try {
       await this.global.api.auth.login(credentials);
 
@@ -43,9 +45,13 @@ class AuthStore {
       });
       console.log('error', error);
     }
+
+    this.global.hideLoader();
   };
 
   public logout = async (navigate: (path: string) => void) => {
+    this.global.showLoader();
+
     try {
       await this.global.api.auth.logout();
 
@@ -59,6 +65,8 @@ class AuthStore {
     } catch (error) {
       console.log('error', error);
     }
+
+    this.global.hideLoader();
   };
 }
 

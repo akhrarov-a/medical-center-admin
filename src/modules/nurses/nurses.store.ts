@@ -73,6 +73,8 @@ class NursesStore {
   };
 
   public getNurseById = async (id: string) => {
+    this.global.showLoader();
+
     try {
       const response = await this.global.api.nurses.getNurseById(id);
 
@@ -87,12 +89,16 @@ class NursesStore {
 
       message.error('Ошибка при загрузке медсестры. Попробуйте снова.');
     }
+
+    this.global.hideLoader();
   };
 
   public createNurse = async (
     nurse: NurseForm,
     navigate: (path: string) => void
   ) => {
+    this.global.showLoader();
+
     try {
       const response = await this.global.api.nurses.createNurse(
         NursesAdapter.nurseFormToNurseDto(nurse)
@@ -106,12 +112,16 @@ class NursesStore {
 
       message.error('Ошибка при создании медсестры. Попробуйте снова.');
     }
+
+    this.global.hideLoader();
   };
 
   public updateNurse = async (
     nurse: NurseForm,
     navigate: (path: string) => void
   ) => {
+    this.global.showLoader();
+
     try {
       const id = this.currentNurseId;
       await this.global.api.nurses.updateNurse(
@@ -129,6 +139,8 @@ class NursesStore {
 
       message.error('Ошибка при обновлении медсестры. Попробуйте снова.');
     }
+
+    this.global.hideLoader();
   };
 
   public deleteNursesByIds = async (ids: number[]) => {
@@ -158,6 +170,10 @@ class NursesStore {
   };
 
   public getDepartments = async () => {
+    runInAction(() => {
+      this.loading = true;
+    });
+
     try {
       const response = await this.global.api.departments.getAllDepartments();
 
@@ -169,6 +185,10 @@ class NursesStore {
     } catch (error) {
       console.log('error', error);
     }
+
+    runInAction(() => {
+      this.loading = false;
+    });
   };
 }
 
