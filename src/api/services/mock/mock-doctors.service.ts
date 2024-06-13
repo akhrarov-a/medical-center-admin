@@ -13,49 +13,49 @@ const mockDoctorsFromSession = sessionStorage.getItem('mockDoctors')
 let mockDoctors = mockDoctorsFromSession || [
   {
     id: 1,
-    firstName: 'John',
-    lastName: 'Doe',
-    surname: 'Smith',
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    surname: 'Иванович',
     department: 1,
     isHeadOfDepartment: true
   },
   {
     id: 2,
-    firstName: 'Jane',
-    lastName: 'Doe',
-    surname: 'Smith',
+    firstName: 'Юрий',
+    lastName: 'Дмитриев',
+    surname: 'Иванович',
     department: 1,
     isHeadOfDepartment: false
   },
   {
     id: 3,
-    firstName: 'Jack',
-    lastName: 'Doe',
-    surname: 'Smith',
+    firstName: 'Юлия',
+    lastName: 'Дмитриева',
+    surname: 'Ивановна',
     department: 1,
     isHeadOfDepartment: false
   },
   {
     id: 4,
-    firstName: 'Jill',
-    lastName: 'Doe',
-    surname: 'Smith',
+    firstName: 'Анна',
+    lastName: 'Андреева',
+    surname: 'Ивановна',
     department: 2,
     isHeadOfDepartment: true
   },
   {
     id: 5,
-    firstName: 'James',
-    lastName: 'Doe',
-    surname: 'Smith',
+    firstName: 'Алексей',
+    lastName: 'Жуков',
+    surname: 'Иванович',
     department: 2,
     isHeadOfDepartment: false
   },
   {
     id: 6,
-    firstName: 'Jenny',
-    lastName: 'Doe',
-    surname: 'Smith',
+    firstName: 'Александр',
+    lastName: 'Смирнов',
+    surname: 'Иванович',
     department: 2,
     isHeadOfDepartment: false
   }
@@ -95,12 +95,31 @@ class MockDoctorsService {
   /**
    * Update doctor
    */
-  static updateDoctor = (id: number, departmentDto: CreateUpdateDoctorDto) => {
-    if (!mockDoctors.find((doctor: { id: number }) => doctor.id === id))
-      return false;
+  static updateDoctor = (id: number, doctorDto: CreateUpdateDoctorDto) => {
+    const existingDoctor = mockDoctors.find(
+      (doctor: { id: number }) => doctor.id === id
+    );
+    const isChangedHeadOfDepartment =
+      doctorDto.isHeadOfDepartment &&
+      doctorDto.isHeadOfDepartment !== existingDoctor.isHeadOfDepartment;
 
-    mockDoctors = mockDoctors.map((doctor: { id: number }) =>
-      doctor.id === id ? { ...doctor, ...departmentDto } : doctor
+    if (!existingDoctor) return false;
+
+    mockDoctors = mockDoctors.map(
+      (doctor: { id: number; department: number }) => {
+        if (doctor.id === id) {
+          return { ...doctor, ...doctorDto };
+        }
+
+        if (
+          isChangedHeadOfDepartment &&
+          doctor.department === doctorDto.department
+        ) {
+          return { ...doctor, isHeadOfDepartment: false };
+        }
+
+        return doctor;
+      }
     );
 
     sessionStorage.setItem('mockDoctors', JSON.stringify(mockDoctors));

@@ -10,7 +10,13 @@ const useDepartmentsListProps = () => {
   const navigate = useNavigate();
 
   const {
-    departments: { loading, departments, getData, deleteDepartmentsByIds }
+    departments: {
+      loading,
+      departments,
+      getData,
+      clearDepartments,
+      deleteDepartmentsByIds
+    }
   } = useStore();
 
   const [selectedRowIds, setSelectedRowIds] = useState<Key[]>([]);
@@ -25,6 +31,10 @@ const useDepartmentsListProps = () => {
 
   useEffect(() => {
     getData();
+
+    return () => {
+      clearDepartments();
+    };
   }, []);
 
   return {

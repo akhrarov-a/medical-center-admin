@@ -10,7 +10,7 @@ const useDoctorsListProps = () => {
   const navigate = useNavigate();
 
   const {
-    doctors: { loading, doctors, getData, deleteDoctorsByIds }
+    doctors: { loading, doctors, getData, clearDoctors, deleteDoctorsByIds }
   } = useStore();
 
   const [selectedRowIds, setSelectedRowIds] = useState<Key[]>([]);
@@ -25,6 +25,10 @@ const useDoctorsListProps = () => {
 
   useEffect(() => {
     getData();
+
+    return () => {
+      clearDoctors();
+    };
   }, []);
 
   return {

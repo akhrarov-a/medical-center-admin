@@ -30,6 +30,12 @@ class DepartmentsStore {
     });
   };
 
+  public clearDepartments = () => {
+    runInAction(() => {
+      this.departments = [];
+    });
+  };
+
   public getData = async () => {
     runInAction(() => {
       this.loading = true;

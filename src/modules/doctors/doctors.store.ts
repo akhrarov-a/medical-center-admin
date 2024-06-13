@@ -34,6 +34,12 @@ class DoctorsStore {
     });
   };
 
+  public clearDoctors = () => {
+    runInAction(() => {
+      this.doctors = [];
+    });
+  };
+
   public getData = async () => {
     runInAction(() => {
       this.loading = true;
