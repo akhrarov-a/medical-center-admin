@@ -116,7 +116,7 @@ class DepartmentsStore {
         DepartmentsAdapter.departmentFormToDepartmentDto(department)
       );
 
-      message.success('Отделение успешно сохранена.');
+      message.success('Отделение успешно обновлено.');
 
       this.clearInitialValues();
 
@@ -124,7 +124,7 @@ class DepartmentsStore {
     } catch (error) {
       console.log('error', error);
 
-      message.error('Ошибка при сохранении отделения. Попробуйте снова.');
+      message.error('Ошибка при обновлении отделения. Попробуйте снова.');
     }
   };
 

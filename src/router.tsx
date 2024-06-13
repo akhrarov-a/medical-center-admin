@@ -7,6 +7,7 @@ import {
   UpdateDepartmentForm
 } from '@departments';
 import { App } from './app';
+import { CreateNurseForm, NursesList, UpdateNurseForm } from '@nurses';
 
 /**
  * Router
@@ -51,6 +52,23 @@ const router = createBrowserRouter([
           {
             path: ':id',
             element: <UpdateDepartmentForm />
+          }
+        ]
+      },
+      {
+        path: 'nurses',
+        children: [
+          {
+            path: '',
+            element: <NursesList />
+          },
+          {
+            path: 'create',
+            element: <CreateNurseForm />
+          },
+          {
+            path: ':id',
+            element: <UpdateNurseForm />
           }
         ]
       }

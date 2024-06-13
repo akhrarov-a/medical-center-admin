@@ -119,7 +119,7 @@ class DoctorsStore {
         DoctorsAdapter.doctorFormToDoctorDto(doctor)
       );
 
-      message.success('Врач успешно сохранен.');
+      message.success('Врач успешно обновлен.');
 
       this.clearInitialValues();
 
@@ -127,7 +127,7 @@ class DoctorsStore {
     } catch (error) {
       console.log('error', error);
 
-      message.error('Ошибка при сохранении врача. Попробуйте снова.');
+      message.error('Ошибка при обновлении врача. Попробуйте снова.');
     }
   };
 

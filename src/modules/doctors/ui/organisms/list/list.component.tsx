@@ -1,7 +1,7 @@
 import { hoc } from '@utils';
 import { Tables } from '@components';
 import { DoctorsTableFilters } from '../../moleculars';
-import { Columns } from './list.config';
+import { Columns, List } from './list.config';
 import { useDoctorsListProps } from './list.props';
 
 /**
@@ -13,7 +13,7 @@ const DoctorsList = hoc.observer(
     <Tables
       loading={loading}
       columns={Columns}
-      dataSource={doctors}
+      dataSource={List(doctors)}
       addText='Добавить врача'
       onAdd={() => navigate('/doctors/create')}
       onDelete={onDeleteDoctors}

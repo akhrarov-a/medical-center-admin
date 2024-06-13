@@ -79,8 +79,6 @@ class MockDepartmentsService {
     );
 
     sessionStorage.setItem('mockDepartments', JSON.stringify(mockDepartments));
-
-    return mockDepartments;
   };
 }
 

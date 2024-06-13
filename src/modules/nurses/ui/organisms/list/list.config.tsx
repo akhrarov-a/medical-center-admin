@@ -1,19 +1,19 @@
 import { ColumnsType } from 'antd/es/table';
-import { DoctorContract } from '@api';
+import { NurseContract } from '@api';
 
 /**
  * List
  */
-const List = (doctors: DoctorContract[]) =>
-  doctors?.map(doctor => ({
-    ...doctor,
-    key: doctor?.id
+const List = (nurses: NurseContract[]) =>
+  nurses?.map(nurse => ({
+    ...nurse,
+    key: nurse?.id
   }));
 
 /**
  * Columns
  */
-const Columns: ColumnsType<DoctorContract> = [
+const Columns: ColumnsType<NurseContract> = [
   {
     title: 'ИД',
     dataIndex: 'id',
@@ -37,12 +37,7 @@ const Columns: ColumnsType<DoctorContract> = [
   {
     title: 'Отделение',
     dataIndex: 'department',
-    render: (department, record) => (
-      <div>
-        {department.name}
-        {record.isHeadOfDepartment && <span className='head_pill'>глава</span>}
-      </div>
-    ),
+    render: department => department.name,
     sorter: (a, b) => a.department.name.length - b.department.name.length
   }
 ];

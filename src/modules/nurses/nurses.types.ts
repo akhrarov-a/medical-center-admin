@@ -1,7 +1,7 @@
 /**
- * User contract
+ * Nurse form
  */
-type UserContract = {
+type NurseForm = {
   /**
    * First name
    */
@@ -18,10 +18,6 @@ type UserContract = {
    * Department
    */
   department: number;
-  /**
-   * Is head of department
-   */
-  isHeadOfDepartment: boolean;
 };
 
-export type { UserContract };
+export type { NurseForm };

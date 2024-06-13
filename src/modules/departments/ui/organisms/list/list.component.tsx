@@ -1,7 +1,7 @@
 import { hoc } from '@utils';
 import { Tables } from '@components';
 import { DepartmentsTableFilters } from '../../moleculars';
-import { Columns } from './list.config';
+import { Columns, List } from './list.config';
 import { useDepartmentsListProps } from './list.props';
 
 /**
@@ -13,7 +13,7 @@ const DepartmentsList = hoc.observer(
     <Tables
       loading={loading}
       columns={Columns}
-      dataSource={departments}
+      dataSource={List(departments)}
       addText='Добавить отделение'
       onAdd={() => navigate('/departments/create')}
       onDelete={onDeleteDepartments}

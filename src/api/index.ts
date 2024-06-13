@@ -2,7 +2,8 @@ import {
   AuthService,
   DepartmentsService,
   DoctorsService,
-  HttpService
+  HttpService,
+  NursesService
 } from './services';
 
 /**
@@ -14,6 +15,7 @@ class ApiService {
   public auth = new AuthService(this.http);
   public departments = new DepartmentsService(this.http);
   public doctors = new DoctorsService(this.http);
+  public nurses = new NursesService(this.http);
 }
 
 export { ApiService };

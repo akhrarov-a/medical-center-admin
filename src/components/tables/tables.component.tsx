@@ -30,7 +30,11 @@ const Tables = hoc(
           <Button type='primary' onClick={onAdd}>
             {addText}
           </Button>
-          <Button type='primary' onClick={deleteSelectRowIds}>
+          <Button
+            disabled={!selectedRowIds.length}
+            type='primary'
+            onClick={deleteSelectRowIds}
+          >
             Удалить
           </Button>
         </div>

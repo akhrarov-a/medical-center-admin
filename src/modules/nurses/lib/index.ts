@@ -1,0 +1,1 @@
+export { NursesAdapter } from './adapter';

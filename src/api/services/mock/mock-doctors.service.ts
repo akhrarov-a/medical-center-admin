@@ -136,8 +136,6 @@ class MockDoctorsService {
     );
 
     sessionStorage.setItem('mockDoctors', JSON.stringify(mockDoctors));
-
-    return mockDoctors;
   };
 }
 

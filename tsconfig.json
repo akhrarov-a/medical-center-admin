@@ -32,7 +32,9 @@
       "@departments": ["./src/modules/departments/index"],
       "@departments/*": ["./src/modules/departments/*"],
       "@doctors": ["./src/modules/doctors/index"],
-      "@doctors/*": ["./src/modules/doctors/*"]
+      "@doctors/*": ["./src/modules/doctors/*"],
+      "@nurses": ["./src/modules/nurses/index"],
+      "@nurses/*": ["./src/modules/nurses/*"]
     }
   },
   "include": [
