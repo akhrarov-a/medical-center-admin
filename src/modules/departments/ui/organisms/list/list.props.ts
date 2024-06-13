@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Key } from 'antd/es/table/interface';
 import { useStore } from '@store';
 
 /**
@@ -19,16 +18,6 @@ const useDepartmentsListProps = () => {
     }
   } = useStore();
 
-  const [selectedRowIds, setSelectedRowIds] = useState<Key[]>([]);
-
-  const onAddDoctor = () => {
-    navigate('/departments/create');
-  };
-
-  const onDeleteDoctors = () => {
-    deleteDepartmentsByIds(selectedRowIds as number[]);
-  };
-
   useEffect(() => {
     getData();
 
@@ -40,11 +29,8 @@ const useDepartmentsListProps = () => {
   return {
     loading,
     departments,
-    selectedRowIds,
     navigate,
-    setSelectedRowIds,
-    onAddDoctor,
-    onDeleteDoctors
+    onDeleteDepartments: deleteDepartmentsByIds
   };
 };
 
