@@ -1,7 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '@store';
-import { toJS } from 'mobx';
 
 /**
  * <DoctorsList /> props
@@ -21,8 +20,6 @@ const useDoctorsListProps = () => {
   } = useStore();
 
   const _doctors = useMemo(() => {
-    console.log(toJS(tableFilters));
-
     if (Object.values(tableFilters).length) {
       return doctors.filter(doctor =>
         Object.entries(tableFilters)
