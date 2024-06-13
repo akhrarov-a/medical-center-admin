@@ -28,6 +28,7 @@ const Auth = hoc.observer(useAuthProps, ({ isLoginError, form, onSubmit }) => (
         >
           <Input type='email' placeholder='Email' />
         </Form.Item>
+
         <Form.Item
           className={classNames(styles.input, {
             [styles.input_margin_bottom]: isLoginError
@@ -37,7 +38,9 @@ const Auth = hoc.observer(useAuthProps, ({ isLoginError, form, onSubmit }) => (
         >
           <Input type='password' placeholder='Password' />
         </Form.Item>
+
         {isLoginError && <p className={styles.error}>Invalid credentials</p>}
+
         <Button className={styles.button} type='primary' htmlType='submit'>
           Log in
         </Button>

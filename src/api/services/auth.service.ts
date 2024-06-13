@@ -1,10 +1,13 @@
-import { LoginCredentials, UserContract } from '@api';
+import { LoginCredentials } from '@api';
 import { HttpService } from './http.service';
 
 /**
  * Auth service
  */
 class AuthService {
+  /**
+   * Mock credentials
+   */
   private mockCredentials = {
     email: 'test@gmail.com',
     password: 'test1234'
@@ -32,12 +35,12 @@ class AuthService {
   /**
    * Log out
    */
-  public logout = async () => {};
-
-  /**
-   * Get user
-   */
-  public getUser = () => new Promise(resolve => resolve({} as UserContract));
+  public logout = async () =>
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve(true);
+      }, 1000);
+    });
 }
 
 export { AuthService };

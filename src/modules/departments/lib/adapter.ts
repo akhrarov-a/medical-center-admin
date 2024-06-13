@@ -1,5 +1,5 @@
-import { DepartmentForm } from '../departments.types';
 import { CreateUpdateDepartmentDto, DepartmentContract } from '@api';
+import { DepartmentForm } from '../departments.types';
 
 /**
  * Departments adapter

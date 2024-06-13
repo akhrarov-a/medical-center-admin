@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Button, Checkbox, Form as UIForm, Input, Select } from 'antd';
-import { FormProps } from './form.props';
-import styles from './form.module.scss';
 import classNames from 'classnames';
 import { useStore } from '@store';
+import { FormProps } from './form.props';
+import styles from './form.module.scss';
 
 /**
  * <Form />
@@ -28,18 +28,18 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
         <div className={styles.header}>
           <p>
             {isEdit
-              ? `Update ${initialValues.firstName} ${initialValues.lastName}`
-              : 'Create Doctor'}
+              ? `Изменить ${initialValues.firstName} ${initialValues.lastName}`
+              : 'Создать Врача'}
           </p>
 
           <Button type='primary' htmlType='submit'>
-            {isEdit ? 'Update' : 'Create'}
+            {isEdit ? 'Сохранить' : 'Создать'}
           </Button>
         </div>
 
         <div className={styles.row}>
           <p className={styles.row_title}>
-            <span>*</span> Firstname:
+            <span>*</span> Имя:
           </p>
 
           <UIForm.Item
@@ -54,7 +54,7 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
 
         <div className={styles.row}>
           <p className={styles.row_title}>
-            <span>*</span> Lastname:
+            <span>*</span> Фамилия:
           </p>
           <UIForm.Item
             className={styles.row_input}
@@ -68,7 +68,7 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
 
         <div className={styles.row}>
           <p className={styles.row_title}>
-            <span>*</span> Surname:
+            <span>*</span> Отчество:
           </p>
 
           <UIForm.Item
@@ -83,7 +83,7 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
 
         <div className={styles.row}>
           <p className={styles.row_title}>
-            <span>*</span> Department:
+            <span>*</span> Отделения:
           </p>
 
           <UIForm.Item
@@ -97,7 +97,7 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
         </div>
 
         <div className={classNames(styles.row, styles.row_equal)}>
-          <p className={styles.row_title}>Is head of department:</p>
+          <p className={styles.row_title}>Является ли главой отделения:</p>
 
           <UIForm.Item
             className={styles.row_equal_input}

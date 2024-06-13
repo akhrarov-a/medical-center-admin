@@ -23,10 +23,10 @@ const DepartmentsList = hoc.observer(
     <div className={styles.container}>
       <div className={styles.buttons}>
         <Button type='primary' onClick={onAddDoctor}>
-          Add department
+          Добавить отделение
         </Button>
         <Button type='primary' onClick={onDeleteDoctors}>
-          Delete
+          Удалить
         </Button>
       </div>
 

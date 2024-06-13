@@ -1,6 +1,6 @@
-import { useUpdateDoctorFormProps } from './update.props';
 import { hoc } from '@utils';
-import { DoctorForm } from '@doctors/ui/moleculars';
+import { DoctorForm } from '../../moleculars';
+import { useUpdateDoctorFormProps } from './update.props';
 
 /**
  * <UpdateDoctorForm />

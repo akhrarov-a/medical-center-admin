@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Button, Form as UIForm, Input } from 'antd';
 import { FormProps } from './form.props';
 import styles from './form.module.scss';
+import classNames from 'classnames';
 
 /**
  * <Form />
@@ -23,17 +24,30 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
       >
         <div className={styles.header}>
           <p>
-            {isEdit ? `Update ${initialValues.name}` : 'Create Department'}{' '}
+            {isEdit ? `Изменить ${initialValues.name}` : 'Создать отделения'}{' '}
           </p>
 
           <Button type='primary' htmlType='submit'>
-            {isEdit ? 'Update' : 'Create'}
+            {isEdit ? 'Сохранить' : 'Создать'}
           </Button>
         </div>
 
+        {isEdit && (
+          <div className={classNames(styles.row, styles.row_equal)}>
+            <p className={styles.row_title}>ИД:</p>
+            <UIForm.Item
+              className={styles.row_equal_input}
+              name='id'
+              validateTrigger='onBlur'
+            >
+              <Input disabled />
+            </UIForm.Item>
+          </div>
+        )}
+
         <div className={styles.row}>
           <p className={styles.row_title}>
-            <span>*</span> Названия:
+            <span>*</span> Названия отделения:
           </p>
 
           <UIForm.Item

@@ -1,4 +1,4 @@
-import { DepartmentContract } from './departments.model.ts';
+import { DepartmentContract } from './departments.model';
 
 /**
  * Create update doctor dto

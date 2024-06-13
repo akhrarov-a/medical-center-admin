@@ -32,7 +32,7 @@ class DepartmentsService {
           return;
         }
 
-        reject('Not found department with id: ' + id);
+        reject('Отделения с ид: ' + id + ' не найдено');
       }, 1000);
     });
 
@@ -60,7 +60,7 @@ class DepartmentsService {
           return;
         }
 
-        reject('Not found department with id: ' + id);
+        reject('Отделения с ид: ' + id + ' не найдено');
       }, 1000);
     });
 

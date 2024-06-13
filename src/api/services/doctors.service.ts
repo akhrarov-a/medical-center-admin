@@ -48,7 +48,7 @@ class DoctorsService {
           return;
         }
 
-        reject('Not found doctor with id: ' + id);
+        reject('Врач с ид: ' + id + ' не найдено');
       }, 1000);
     });
 
@@ -76,7 +76,7 @@ class DoctorsService {
           return;
         }
 
-        reject('Not found doctor with id: ' + id);
+        reject('Врач с ид: ' + id + ' не найдено');
       }, 1000);
     });
 

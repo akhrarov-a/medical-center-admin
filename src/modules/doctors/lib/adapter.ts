@@ -1,5 +1,5 @@
-import { DoctorForm } from '../doctors.types';
 import { CreateUpdateDoctorDto, DoctorContract } from '@api';
+import { DoctorForm } from '../doctors.types';
 
 /**
  * Doctors adapter

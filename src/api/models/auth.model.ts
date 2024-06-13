@@ -10,6 +10,6 @@ type LoginCredentials = {
    * Password
    */
   password: string;
-}
+};
 
 export type { LoginCredentials };

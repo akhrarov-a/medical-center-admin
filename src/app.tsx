@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useStore } from '@store';
 import { Layout } from '@components';
 import { hoc } from '@utils';
-import { useStore } from '@store';
-import { useEffect } from 'react';
 
 /**
  * App

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useStore } from '@store';
 import { useNavigate, useParams } from 'react-router-dom';
-import { DoctorForm } from '@doctors/doctors.types.ts';
+import { useStore } from '@store';
+import { DoctorForm } from '@doctors/doctors.types';
 
 /**
  * <UpdateDoctorForm /> props

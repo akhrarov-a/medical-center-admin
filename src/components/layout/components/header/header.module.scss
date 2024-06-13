@@ -12,18 +12,6 @@
   padding: 10px 15px;
 }
 
-.profile {
-  @include flex(center, center);
-  @include size(48px);
-
-  margin-right: 20px;
-  font-size: 18px;
-  letter-spacing: 2px;
-  color: $white;
-  background: $primary-blue;
-  border-radius: 100%;
-}
-
 .logout {
   width: 150px;
   height: 38px;

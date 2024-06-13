@@ -44,4 +44,19 @@
     width: 100%;
     margin: 0;
   }
+
+  &_equal {
+    @include flex(space-between, center);
+
+    &_input {
+      width: 100%;
+      margin: 0;
+      text-align: right;
+
+      input {
+        width: 80px;
+        text-align: right;
+      }
+    }
+  }
 }

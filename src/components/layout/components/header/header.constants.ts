@@ -3,15 +3,15 @@
  */
 const links = [
   {
-    label: 'Doctors',
+    label: 'Врачи',
     path: '/doctors'
   },
   {
-    label: 'Nurses',
+    label: 'Медсестры',
     path: '/nurses'
   },
   {
-    label: 'Departments',
+    label: 'Отделения',
     path: '/departments'
   }
 ];

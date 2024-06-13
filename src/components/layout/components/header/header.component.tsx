@@ -34,7 +34,7 @@ const Header = hoc.observer(useStore, ({ auth: { logout } }) => {
           type='primary'
           onClick={() => logout(navigate)}
         >
-          Log out
+          Выйти
         </Button>
       </div>
     </div>

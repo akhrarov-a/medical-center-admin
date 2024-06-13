@@ -20,7 +20,7 @@ const Columns: ColumnsType<DepartmentContract> = [
     sorter: (a, b) => a.id - b.id
   },
   {
-    title: 'Название',
+    title: 'Название отделения',
     dataIndex: 'name',
     sorter: (a, b) => a.name.length - b.name.length
   }

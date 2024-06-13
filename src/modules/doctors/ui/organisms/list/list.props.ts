@@ -1,7 +1,7 @@
-import { useStore } from '@store';
 import { useEffect, useState } from 'react';
-import { Key } from 'antd/es/table/interface';
 import { useNavigate } from 'react-router-dom';
+import { Key } from 'antd/es/table/interface';
+import { useStore } from '@store';
 
 /**
  * <DoctorsList /> props
