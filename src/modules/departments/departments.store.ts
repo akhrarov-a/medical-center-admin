@@ -1,5 +1,6 @@
-import { GlobalStore } from '@store';
+import { message } from 'antd';
 import { makeAutoObservable, runInAction } from 'mobx';
+import { GlobalStore } from '@store';
 import { DepartmentContract } from '@api';
 import { DepartmentsAdapter } from './lib';
 import { DepartmentForm } from './departments.types';
@@ -42,6 +43,10 @@ class DepartmentsStore {
       });
     } catch (error) {
       console.log('error', error);
+
+      message.error(
+        'Ошибка при загрузке отделений. Попробуйте обновить страницу.'
+      );
     } finally {
       runInAction(() => {
         this.loading = false;
@@ -60,6 +65,10 @@ class DepartmentsStore {
       });
     } catch (error) {
       console.log('error', error);
+
+      message.error(
+        'Ошибка при загрузке отделения. Попробуйте обновить страницу.'
+      );
     }
   };
 
@@ -72,9 +81,13 @@ class DepartmentsStore {
         DepartmentsAdapter.departmentFormToDepartmentDto(department)
       );
 
+      message.success('Отделение успешно создана.');
+
       navigate(`/departments/${response.data.id}`);
     } catch (error) {
       console.log('error', error);
+
+      message.error('Ошибка при создании отделения. Попробуйте снова.');
     }
   };
 
@@ -89,11 +102,15 @@ class DepartmentsStore {
         DepartmentsAdapter.departmentFormToDepartmentDto(department)
       );
 
+      message.success('Отделение успешно сохранена.');
+
       this.clearInitialValues();
 
       navigate(`/departments/${id}`);
     } catch (error) {
       console.log('error', error);
+
+      message.error('Ошибка при сохранении отделения. Попробуйте снова.');
     }
   };
 
@@ -105,9 +122,17 @@ class DepartmentsStore {
     try {
       await this.global.api.departments.deleteDepartments(ids);
 
+      message.success(
+        ids.length > 1
+          ? 'Отделы успешно удалены.'
+          : 'Отделение успешно удалено.'
+      );
+
       await this.getData();
     } catch (error) {
       console.log('error', error);
+
+      message.error('Ошибка при удалении отделений. Попробуйте снова.');
     } finally {
       runInAction(() => {
         this.loading = false;

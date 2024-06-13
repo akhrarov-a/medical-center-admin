@@ -5,6 +5,7 @@ import { DoctorContract } from '@api';
 import { DoctorForm } from '@doctors/doctors.types';
 import { DoctorsAdapter } from '@doctors/lib';
 import { DepartmentsAdapter } from '@departments/lib';
+import { message } from 'antd';
 
 /**
  * Doctors store
@@ -46,6 +47,10 @@ class DoctorsStore {
       });
     } catch (error) {
       console.log('error', error);
+
+      message.error(
+        'Ошибка при загрузке врачей. Попробуйте обновить страницу.'
+      );
     } finally {
       runInAction(() => {
         this.loading = false;
@@ -65,6 +70,8 @@ class DoctorsStore {
       });
     } catch (error) {
       console.log('error', error);
+
+      message.error('Ошибка при загрузке врача. Попробуйте обновить страницу.');
     }
   };
 
@@ -77,9 +84,13 @@ class DoctorsStore {
         DoctorsAdapter.doctorFormToDoctorDto(doctor)
       );
 
+      message.success('Врач успешно создан.');
+
       navigate(`/doctors/${response.data.id}`);
     } catch (error) {
       console.log('error', error);
+
+      message.error('Ошибка при создании врача. Попробуйте снова.');
     }
   };
 
@@ -94,11 +105,15 @@ class DoctorsStore {
         DoctorsAdapter.doctorFormToDoctorDto(doctor)
       );
 
+      message.success('Врач успешно сохранен.');
+
       this.clearInitialValues();
 
       navigate(`/doctors/${id}`);
     } catch (error) {
       console.log('error', error);
+
+      message.error('Ошибка при сохранении врача. Попробуйте снова.');
     }
   };
 
@@ -110,9 +125,15 @@ class DoctorsStore {
     try {
       await this.global.api.doctors.deleteDoctors(ids);
 
+      message.success(
+        ids.length > 1 ? 'Врачи успешно удалены.' : 'Врач успешно удален.'
+      );
+
       await this.getData();
     } catch (error) {
       console.log('error', error);
+
+      message.error('Ошибка при удалении врачей. Попробуйте снова.');
     } finally {
       runInAction(() => {
         this.loading = false;
