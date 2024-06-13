@@ -29,8 +29,8 @@
       "@store": ["./src/store/index"],
       "@auth": ["./src/modules/auth/index"],
       "@auth/*": ["./src/modules/auth/*"],
-      "@dashboard": ["./src/modules/dashboard/index"],
-      "@dashboard/*": ["./src/modules/dashboard/*"],
+      "@departments": ["./src/modules/departments/index"],
+      "@departments/*": ["./src/modules/departments/*"],
       "@doctors": ["./src/modules/doctors/index"],
       "@doctors/*": ["./src/modules/doctors/*"]
     }

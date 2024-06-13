@@ -17,6 +17,12 @@ class AuthStore {
   public isLoginError: boolean = false;
   public isAuthorized: boolean = false;
 
+  public setIsAuthorized = (isAuthorized: boolean) => {
+    runInAction(() => {
+      this.isAuthorized = isAuthorized;
+    });
+  };
+
   public login = async (
     credentials: LoginCredentials,
     navigate: (path: string) => void
@@ -29,6 +35,7 @@ class AuthStore {
         this.isAuthorized = true;
       });
 
+      sessionStorage.setItem('isAuthorized', 'true');
       navigate('/');
     } catch (error) {
       runInAction(() => {
@@ -45,6 +52,8 @@ class AuthStore {
       runInAction(() => {
         this.isAuthorized = false;
       });
+
+      sessionStorage.removeItem('isAuthorized');
 
       navigate('/auth');
     } catch (error) {

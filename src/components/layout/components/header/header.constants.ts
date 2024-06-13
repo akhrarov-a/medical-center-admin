@@ -3,16 +3,16 @@
  */
 const links = [
   {
-    label: 'Dashboard',
-    path: '/'
-  },
-  {
     label: 'Doctors',
     path: '/doctors'
   },
   {
     label: 'Nurses',
     path: '/nurses'
+  },
+  {
+    label: 'Departments',
+    path: '/departments'
   }
 ];
 

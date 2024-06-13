@@ -1,6 +1,7 @@
 import { ApiService } from '@api';
 import { DoctorsStore } from '@doctors/doctors.store';
 import { AuthStore } from '@auth/auth.store';
+import { DepartmentsStore } from '@departments/departments.store';
 
 /**
  * Global store
@@ -8,12 +9,14 @@ import { AuthStore } from '@auth/auth.store';
 class GlobalStore {
   public api: ApiService;
   public auth: AuthStore;
-  public doctorsStore: DoctorsStore;
+  public departments: DepartmentsStore;
+  public doctors: DoctorsStore;
 
   constructor() {
     this.api = new ApiService();
     this.auth = new AuthStore(this);
-    this.doctorsStore = new DoctorsStore();
+    this.departments = new DepartmentsStore(this);
+    this.doctors = new DoctorsStore(this);
   }
 }
 

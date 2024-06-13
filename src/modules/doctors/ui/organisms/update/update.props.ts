@@ -1,35 +1,33 @@
-// import { useStore } from '@/app.context';
-// import { useRouter } from 'next/router';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
+import { useStore } from '@store';
+import { useNavigate, useParams } from 'react-router-dom';
+import { DoctorForm } from '@doctors/doctors.types.ts';
 
 /**
  * <UpdateDoctorForm /> props
  */
 const useUpdateDoctorFormProps = () => {
-  // const router = useRouter();
-  // const { suppliers: store, products } = useStore();
-  //
-  // useEffect(() => {
-  //   store.getLocations();
-  //   store.getCities();
-  //   store.getPayments();
-  //   store.getShippings();
-  //   products.getCategoryTree();
-  //
-  //   return () => {
-  //     store.clearInitialValues();
-  //   };
-  // }, []);
-  //
-  // useEffect(() => {
-  //   if (!router.query.id) return;
-  //
-  //   store.getSupplierById(router.query.id as string);
-  // }, [router.query.id]);
+  const navigate = useNavigate();
+  const params = useParams();
+
+  const { doctors: store } = useStore();
+
+  useEffect(
+    () => () => {
+      store.clearInitialValues();
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (!params.id) return;
+
+    store.getDoctorById(params.id);
+  }, [params]);
 
   return {
-    // initialValues: store.initialValues,
-    // onSubmit: store.updateSupplier
+    initialValues: store.initialValues,
+    onSubmit: (values: DoctorForm) => store.updateDoctor(values, navigate)
   };
 };
 

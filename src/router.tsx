@@ -1,7 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Dashboard } from '@dashboard';
 import { Auth } from '@auth';
 import { CreateDoctorForm, DoctorsList, UpdateDoctorForm } from '@doctors';
+import {
+  CreateDepartmentForm,
+  DepartmentsList,
+  UpdateDepartmentForm
+} from '@departments';
 import { App } from './app';
 
 /**
@@ -16,10 +20,6 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-      {
-        path: '',
-        element: <Dashboard />
-      },
       {
         path: 'doctors',
         children: [
@@ -36,8 +36,24 @@ const router = createBrowserRouter([
             element: <UpdateDoctorForm />
           }
         ]
+      },
+      {
+        path: 'departments',
+        children: [
+          {
+            path: '',
+            element: <DepartmentsList />
+          },
+          {
+            path: 'create',
+            element: <CreateDepartmentForm />
+          },
+          {
+            path: ':id',
+            element: <UpdateDepartmentForm />
+          }
+        ]
       }
-
     ]
   }
 ]);

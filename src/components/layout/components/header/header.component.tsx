@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import { hoc } from '@utils';
 import { useStore } from '@store';
-import { links } from './header.constants.ts';
+import { links } from './header.constants';
 import styles from './header.module.scss';
 
 /**

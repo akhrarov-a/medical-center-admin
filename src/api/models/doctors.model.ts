@@ -5,7 +5,7 @@ type CreateUpdateDoctorDto = {
   /**
    * First name
    */
-  fistName: string;
+  firstName: string;
   /**
    * Last name
    */

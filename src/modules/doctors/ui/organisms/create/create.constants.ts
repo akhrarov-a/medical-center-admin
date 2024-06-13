@@ -4,10 +4,10 @@ import { DoctorForm } from '@doctors/doctors.types';
  * Initial values
  */
 const initialValues: DoctorForm = {
-  fistName: '',
+  firstName: '',
   lastName: '',
   surname: '',
-  department: 0,
+  department: null as any,
   isHeadOfDepartment: false
 };
 

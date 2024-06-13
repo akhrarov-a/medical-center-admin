@@ -5,7 +5,7 @@ type DoctorForm = {
   /**
    * First name
    */
-  fistName: string;
+  firstName: string;
   /**
    * Last name
    */

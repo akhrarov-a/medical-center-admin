@@ -1,18 +1,19 @@
 import { useUpdateDoctorFormProps } from './update.props';
 import { hoc } from '@utils';
+import { DoctorForm } from '@doctors/ui/moleculars';
 
 /**
  * <UpdateDoctorForm />
  */
-const UpdateDoctorForm = hoc.observer(useUpdateDoctorFormProps, () => {
-  // if (isEmptyObject(initialValues)) return null;
+const UpdateDoctorForm = hoc.observer(
+  useUpdateDoctorFormProps,
+  ({ initialValues, onSubmit }) => {
+    if (!Object.keys(initialValues).length) return null;
 
-  return (
-    <div>
-      Update doctor form
-    </div>
-    // <SupplierForm isEdit onSubmit={onSubmit} initialValues={initialValues} />
-  );
-});
+    return (
+      <DoctorForm isEdit onSubmit={onSubmit} initialValues={initialValues} />
+    );
+  }
+);
 
 export { UpdateDoctorForm };

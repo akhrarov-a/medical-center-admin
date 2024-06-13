@@ -6,14 +6,15 @@ import { useCreateDoctorFormProps } from './create.props';
 /**
  * <CreateDoctorForm />
  */
-const CreateDoctorForm = hoc.observer(useCreateDoctorFormProps, () => (
-  <DoctorForm
-    isEdit={false}
-    initialValues={initialValues}
-    onSubmit={(values) => {
-      console.log(values);
-    }}
-  />
-));
+const CreateDoctorForm = hoc.observer(
+  useCreateDoctorFormProps,
+  ({ onSubmit }) => (
+    <DoctorForm
+      isEdit={false}
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+    />
+  )
+);
 
 export { CreateDoctorForm };

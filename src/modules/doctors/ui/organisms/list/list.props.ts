@@ -1,23 +1,40 @@
-// import { Columns, MoreColumns } from '@doctors/lib';
+import { useStore } from '@store';
+import { useEffect, useState } from 'react';
+import { Key } from 'antd/es/table/interface';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * <DoctorsList /> props
  */
 const useDoctorsListProps = () => {
-  // const { suppliers: store } = useStore();
+  const navigate = useNavigate();
 
-  // const tableProps = useTableActions({
-  //   moduleName: 'suppliers',
-  //   total: store.total,
-  //   columns: Columns,
-  //   moreColumns: MoreColumns,
-  //   getData: store.getData
-  // });
+  const {
+    doctors: { loading, doctors, getData, deleteDoctorsByIds }
+  } = useStore();
+
+  const [selectedRowIds, setSelectedRowIds] = useState<Key[]>([]);
+
+  const onAddDoctor = () => {
+    navigate('/doctors/create');
+  };
+
+  const onDeleteDoctors = () => {
+    deleteDoctorsByIds(selectedRowIds as number[]);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return {
-    // states: store.states.slice(),
-    // items: store.allSuppliers.slice(),
-    // tableProps
+    loading,
+    doctors,
+    selectedRowIds,
+    navigate,
+    setSelectedRowIds,
+    onAddDoctor,
+    onDeleteDoctors
   };
 };
 
