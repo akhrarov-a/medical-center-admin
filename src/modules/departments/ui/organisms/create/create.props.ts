@@ -1,5 +1,5 @@
-import { useStore } from '@store';
 import { useNavigate } from 'react-router-dom';
+import { useStore } from '@store';
 import { DepartmentForm } from '@departments/departments.types';
 
 /**

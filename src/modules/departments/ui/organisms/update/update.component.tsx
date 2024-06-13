@@ -1,6 +1,6 @@
 import { hoc } from '@utils';
-import { useUpdateDepartmentFormProps } from './update.props';
 import { DepartmentForm } from '@departments/ui/moleculars';
+import { useUpdateDepartmentFormProps } from './update.props';
 
 /**
  * <UpdateDepartmentForm />

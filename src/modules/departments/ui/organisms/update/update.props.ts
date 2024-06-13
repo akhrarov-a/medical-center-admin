@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '@store';
 import { DepartmentForm } from '@departments/departments.types';
-import { useNavigate, useParams } from 'react-router-dom';
 
 /**
  * <UpdateDepartmentForm /> props
