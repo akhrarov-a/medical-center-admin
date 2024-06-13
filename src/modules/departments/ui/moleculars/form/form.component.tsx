@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Button, Form as UIForm, Input } from 'antd';
+import { formIsValid, isSomeValueChangedAndValid } from '@utils';
 import { FormProps } from './form.props';
 
 /**
@@ -25,9 +26,26 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
             {isEdit ? `Изменить ${initialValues.name}` : 'Создать отделения'}{' '}
           </p>
 
-          <Button type='primary' htmlType='submit'>
-            {isEdit ? 'Сохранить' : 'Создать'}
-          </Button>
+          <UIForm.Item noStyle shouldUpdate>
+            {formInstance => {
+              const isDirty = isSomeValueChangedAndValid(
+                formInstance,
+                initialValues
+              );
+
+              const isValid = formIsValid(formInstance, []);
+
+              return (
+                <Button
+                  disabled={isEdit ? !isDirty : !isValid}
+                  type='primary'
+                  htmlType='submit'
+                >
+                  {isEdit ? 'Сохранить' : 'Создать'}
+                </Button>
+              );
+            }}
+          </UIForm.Item>
         </div>
 
         {isEdit && (

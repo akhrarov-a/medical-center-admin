@@ -27,6 +27,7 @@ const DoctorsTableFilters = hoc.observer(
         placeholder='отделение'
         options={departments}
         onChange={value => onFilterChange('department', value)}
+        style={{ minWidth: '200px' }}
         allowClear
       />
     </div>
