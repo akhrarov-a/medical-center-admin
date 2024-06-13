@@ -4,6 +4,11 @@
 - run `npm install`
 - run `npm run dev`
 
+### Mock credentials for login
+
+- Email: `test@gmail.com`
+- Password: `test1234`
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
