@@ -45,6 +45,7 @@ class NursesStore {
   public clearNurses = () => {
     runInAction(() => {
       this.nurses = [];
+      this.tableFilters = {};
     });
   };
 

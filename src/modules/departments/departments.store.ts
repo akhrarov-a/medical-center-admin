@@ -41,6 +41,7 @@ class DepartmentsStore {
   public clearDepartments = () => {
     runInAction(() => {
       this.departments = [];
+      this.tableFilters = {};
     });
   };
 
