@@ -6,7 +6,7 @@ import { CreateUpdateDoctorDto, DoctorContract } from '@api';
  */
 class DoctorsAdapter {
   static doctorContractToDoctorForm(doctor: DoctorContract): DoctorForm {
-    return doctor;
+    return { ...doctor, department: doctor.department.id };
   }
 
   static doctorFormToDoctorDto(doctor: DoctorForm): CreateUpdateDoctorDto {

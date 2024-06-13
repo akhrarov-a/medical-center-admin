@@ -1,3 +1,5 @@
+import { DepartmentContract } from './departments.model.ts';
+
 /**
  * Create update doctor dto
  */
@@ -27,11 +29,15 @@ type CreateUpdateDoctorDto = {
 /**
  * Doctor contract
  */
-type DoctorContract = CreateUpdateDoctorDto & {
+type DoctorContract = Omit<CreateUpdateDoctorDto, 'department'> & {
   /**
    * Id
    */
   id: number;
+  /**
+   * Department
+   */
+  department: DepartmentContract;
 };
 
 export type { CreateUpdateDoctorDto, DoctorContract };

@@ -42,7 +42,7 @@ const DepartmentsList = hoc.observer(
         scroll={{ x: true }}
         onRow={record => ({
           onClick: () => {
-            navigate(`/doctors/${record.id}`);
+            navigate(`/departments/${record.id}`);
           }
         })}
         rowKey={record => record?.id}

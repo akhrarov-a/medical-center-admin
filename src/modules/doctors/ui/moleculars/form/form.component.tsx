@@ -4,11 +4,14 @@ import { Button, Checkbox, Form as UIForm, Input, Select } from 'antd';
 import { FormProps } from './form.props';
 import styles from './form.module.scss';
 import classNames from 'classnames';
+import { useStore } from '@store';
 
 /**
  * <Form />
  */
 const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
+  const { doctors: store } = useStore();
+
   const [form] = UIForm.useForm();
 
   return (
@@ -89,7 +92,7 @@ const Form: FC<FormProps> = observer(({ isEdit, initialValues, onSubmit }) => {
             rules={[{ required: true }]}
             validateTrigger='onBlur'
           >
-            <Select placeholder='департамент' options={[]} />
+            <Select placeholder='департамент' options={store.departments} />
           </UIForm.Item>
         </div>
 

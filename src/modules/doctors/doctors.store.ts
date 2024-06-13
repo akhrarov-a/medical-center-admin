@@ -1,8 +1,10 @@
 import { GlobalStore } from '@store';
+import { DefaultOptionType } from 'rc-select/es/Select';
 import { makeAutoObservable, runInAction } from 'mobx';
 import { DoctorContract } from '@api';
 import { DoctorForm } from '@doctors/doctors.types';
 import { DoctorsAdapter } from '@doctors/lib';
+import { DepartmentsAdapter } from '@departments/lib';
 
 /**
  * Doctors store
@@ -21,6 +23,8 @@ class DoctorsStore {
 
   public initialValues: DoctorForm = {} as DoctorForm;
   public currentDoctorId: number = 0;
+
+  public departments: DefaultOptionType[] = [];
 
   public clearInitialValues = () => {
     runInAction(() => {
@@ -113,6 +117,20 @@ class DoctorsStore {
       runInAction(() => {
         this.loading = false;
       });
+    }
+  };
+
+  public getDepartments = async () => {
+    try {
+      const response = await this.global.api.departments.getAllDepartments();
+
+      runInAction(() => {
+        this.departments = DepartmentsAdapter.departmentsToOptionsList(
+          response.data
+        );
+      });
+    } catch (error) {
+      console.log('error', error);
     }
   };
 }

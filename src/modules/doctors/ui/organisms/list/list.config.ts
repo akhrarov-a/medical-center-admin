@@ -37,7 +37,8 @@ const Columns: ColumnsType<DoctorContract> = [
   {
     title: 'Департамент',
     dataIndex: 'department',
-    sorter: (a, b) => a.department - b.department
+    render: department => department.name,
+    sorter: (a, b) => a.department.name.length - b.department.name.length
   }
 ];
 

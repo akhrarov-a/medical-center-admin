@@ -1,6 +1,6 @@
 import { CreateUpdateDoctorDto, DoctorContract } from '@api';
 import { HttpService } from './http.service';
-import { MockDoctorsService } from './mock';
+import { MockDepartmentsService, MockDoctorsService } from './mock';
 
 /**
  * Doctors service
@@ -14,7 +14,16 @@ class DoctorsService {
   public getAllDoctors = () =>
     new Promise<{ data: DoctorContract[] }>(resolve => {
       setTimeout(() => {
-        resolve({ data: MockDoctorsService.getAllDoctors() });
+        const doctors = MockDoctorsService.getAllDoctors();
+
+        resolve({
+          data: doctors.map((doctor: { department: number }) => ({
+            ...doctor,
+            department: MockDepartmentsService.getDepartmentById(
+              doctor.department
+            )
+          }))
+        });
       }, 1000);
     });
 
@@ -27,7 +36,14 @@ class DoctorsService {
         const doctor = MockDoctorsService.getDoctorById(+id);
 
         if (doctor) {
-          resolve({ data: doctor });
+          resolve({
+            data: {
+              ...doctor,
+              department: MockDepartmentsService.getDepartmentById(
+                doctor.department
+              )
+            }
+          });
 
           return;
         }
@@ -40,7 +56,7 @@ class DoctorsService {
    * Create doctor
    */
   public createDoctor = (data: CreateUpdateDoctorDto) =>
-    new Promise<{ data: DoctorContract }>(resolve => {
+    new Promise<{ data: { id: number } }>(resolve => {
       setTimeout(() => {
         resolve({ data: MockDoctorsService.createDoctor(data) });
       }, 1000);

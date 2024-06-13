@@ -1,4 +1,4 @@
-import { CreateUpdateDoctorDto, DoctorContract } from '@api';
+import { CreateUpdateDoctorDto } from '@api';
 
 /**
  * Mock doctors from session
@@ -10,7 +10,7 @@ const mockDoctorsFromSession = sessionStorage.getItem('mockDoctors')
 /**
  * Mock doctors
  */
-let mockDoctors: DoctorContract[] = mockDoctorsFromSession || [
+let mockDoctors = mockDoctorsFromSession || [
   {
     id: 1,
     firstName: 'John',
@@ -74,7 +74,7 @@ class MockDoctorsService {
    * Get doctor by id
    */
   static getDoctorById = (id: number) =>
-    mockDoctors.find(doctor => doctor.id === id);
+    mockDoctors.find((doctor: { id: number }) => doctor.id === id);
 
   /**
    * Create doctor
@@ -89,16 +89,17 @@ class MockDoctorsService {
 
     sessionStorage.setItem('mockDoctors', JSON.stringify(mockDoctors));
 
-    return newDoctor;
+    return { id: newDoctor.id };
   };
 
   /**
    * Update doctor
    */
   static updateDoctor = (id: number, departmentDto: CreateUpdateDoctorDto) => {
-    if (!mockDoctors.find(doctor => doctor.id === id)) return false;
+    if (!mockDoctors.find((doctor: { id: number }) => doctor.id === id))
+      return false;
 
-    mockDoctors = mockDoctors.map(doctor =>
+    mockDoctors = mockDoctors.map((doctor: { id: number }) =>
       doctor.id === id ? { ...doctor, ...departmentDto } : doctor
     );
 
@@ -111,7 +112,9 @@ class MockDoctorsService {
    * Delete doctors by ids
    */
   static deleteDoctorsByIds = (ids: number[]) => {
-    mockDoctors = mockDoctors.filter(doctor => !ids.includes(doctor.id));
+    mockDoctors = mockDoctors.filter(
+      (doctor: { id: number }) => !ids.includes(doctor.id)
+    );
 
     sessionStorage.setItem('mockDoctors', JSON.stringify(mockDoctors));
 

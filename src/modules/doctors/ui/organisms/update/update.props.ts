@@ -12,12 +12,13 @@ const useUpdateDoctorFormProps = () => {
 
   const { doctors: store } = useStore();
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    store.getDepartments();
+
+    return () => {
       store.clearInitialValues();
-    },
-    []
-  );
+    };
+  }, []);
 
   useEffect(() => {
     if (!params.id) return;
