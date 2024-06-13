@@ -81,7 +81,7 @@ class MockDoctorsService {
    */
   static createDoctor = (doctorDto: CreateUpdateDoctorDto) => {
     const newDoctor = {
-      id: mockDoctors.length + 1,
+      id: mockDoctors[mockDoctors.length - 1].id + 1,
       ...doctorDto
     };
 

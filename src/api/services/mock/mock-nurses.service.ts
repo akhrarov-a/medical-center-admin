@@ -1,4 +1,4 @@
-import { CreateUpdateNurseDto } from '../../models/nurses.model.ts';
+import { CreateUpdateNurseDto } from '@api';
 
 /**
  * Mock nurses from session
@@ -75,7 +75,7 @@ class MockNursesService {
    */
   static createNurse = (nurseDto: CreateUpdateNurseDto) => {
     const newNurse = {
-      id: mockNurses.length + 1,
+      id: mockNurses[mockNurses.length - 1].id + 1,
       ...nurseDto
     };
 

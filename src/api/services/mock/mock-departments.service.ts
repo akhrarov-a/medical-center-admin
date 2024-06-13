@@ -41,7 +41,7 @@ class MockDepartmentsService {
    */
   static createDepartment = (departmentDto: CreateUpdateDepartmentDto) => {
     const newDepartment = {
-      id: mockDepartments.length + 1,
+      id: mockDepartments[mockDepartments.length - 1].id + 1,
       ...departmentDto
     };
 
